@@ -20,4 +20,8 @@ public class Student {
 
     @Column(name = "name")
     private String name;
+
+    public String getId() {
+        return this.id;
+    }
 }

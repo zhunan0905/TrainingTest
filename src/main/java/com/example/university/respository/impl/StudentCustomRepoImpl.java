@@ -23,4 +23,9 @@ public class StudentCustomRepoImpl implements StudentCustomRepo {
         entityManager.persist(student);
         return student;
     }
+
+    public Student update(Student student) {
+        entityManager.merge(student);
+        return student;
+    }
 }

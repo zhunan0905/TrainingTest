@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping(value = "/student", method = {RequestMethod.GET})
 public class StudentController {
 
     private final StudentService studentService;
@@ -27,7 +27,7 @@ public class StudentController {
         return new ResponseEntity<>(studentService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public ResponseEntity<CommonResponse> findAll() {
         return new ResponseEntity<>(studentService.findAll(), HttpStatus.OK);
     }
@@ -39,7 +39,17 @@ public class StudentController {
     }
 
     //TODO: /{id} , method : put,  update student
+    @PutMapping("/{id}/{name}")
+    public ResponseEntity<CommonResponse> update(@PathVariable String id, @PathVariable String name) {
+//        if(name == null) {
+//            return new ResponseEntity<>(studentService.update(id, null), HttpStatus.OK);
+//        }
+//        else {
+//            return new ResponseEntity<>(studentService.update(id, name), HttpStatus.OK);
+//        }
+        return new ResponseEntity<>(studentService.update(id, name), HttpStatus.OK);
 
+    }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<CommonResponse> handleNotFound() {
