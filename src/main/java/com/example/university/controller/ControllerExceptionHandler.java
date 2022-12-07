@@ -19,8 +19,8 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler{
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Object> handle(Exception ex,
                                          WebRequest request) {
-        String bodyOfResponse = "Test";
-        return handleExceptionInternal(ex, bodyOfResponse,
+//        String bodyOfResponse = "Test";
+        return handleExceptionInternal(ex,null,
                 new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 //    @ExceptionHandler(value = {Exception.class})
