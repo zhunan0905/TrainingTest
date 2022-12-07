@@ -14,17 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice
-public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
+public class ControllerExceptionHandler extends ResponseEntityExceptionHandler{
 
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<Object> handle(Exception ex,
+                                         WebRequest request) {
+        String bodyOfResponse = "Test";
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
 //    @ExceptionHandler(value = {Exception.class})
-//    public ResponseEntity<Object> handle(Exception ex,
-//                                         WebRequest request) {
-//        String bodyOfResponse = "Test";
-//        return handleExceptionInternal(ex, bodyOfResponse,
-//                new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
-//    }
-//    @ExceptionHandler(value = {NoHandlerFoundException.class})
-//    public String checkHandler(NoHandlerFoundException ex) {
+//    public String checkHandler(Exception ex) {
 //        return "TEST";
 //    }
 }
