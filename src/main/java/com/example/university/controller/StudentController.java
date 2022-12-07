@@ -51,11 +51,11 @@ public class StudentController {
 
     }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<CommonResponse> handleNotFound() {
-        return new ResponseEntity<>(
-                    new CommonResponse(-1, new Date(), "resource not found"),
-                    HttpStatus.NOT_FOUND
-                );
-    }
+//    @ExceptionHandler(ResourceNotFoundException.class)
+//    public ResponseEntity<CommonResponse> handleNotFound() {
+//        return new ResponseEntity<>(
+//                    new CommonResponse(-1, new Date(), "resource not found"),
+//                    HttpStatus.NOT_FOUND
+//                );
+//    }
 }
